@@ -33,7 +33,7 @@ public class TodoController implements CommandLineRunner {
         return "redirect:/";
     }
 
-    @GetMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteTodoItem(@PathVariable("id") Long id) {
         todoItemRepository.deleteById(id);
         return "redirect:/";

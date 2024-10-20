@@ -11,22 +11,24 @@
 
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Список дел</h1>
-        <form th:action="@{/add}" th:object="${newTodo}" method="post" class="mb-3">
-            <div class="input-group">
-                <input type="text" class="form-control" th:field="*{title}" placeholder="Enter todo item">
-                <button class="btn btn-primary" type="submit">Добавить</button>
-            </div>
-        </form>
+<div class="container mt-5">
+    <h1 class="text-center">Список дел</h1>
+    <form th:action="@{/add}" th:object="${newTodo}" method="post" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" th:field="*{title}" placeholder="Enter todo item">
+            <button class="btn btn-primary" type="submit">Добавить</button>
+        </div>
+    </form>
 
     <ul class="list-group">
         <li th:each="item : ${todoItems}" class="list-group-item d-flex justify-content-between align-items-center">
             <span th:text="${item.title}"></span>
             <!-- Кнопка удалить -->
-            <a th:href="@{/delete/{id}(id=${item.id})}" class="btn btn-danger btn-sm">Удалить</a>
+            <form th:action="@{/delete/{id}(id=${item.id})}" method="post">
+                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+            </form>
         </li>
     </ul>
-    </div>
+</div>
 </body>
 </html>
