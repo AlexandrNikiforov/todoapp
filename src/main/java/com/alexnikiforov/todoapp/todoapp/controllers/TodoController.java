@@ -39,6 +39,12 @@ public class TodoController implements CommandLineRunner {
         return "redirect:/";
     }
 
+    @PostMapping("/removeAll")
+    public String removeAllTodoItems() {
+        todoItemRepository.deleteAll();
+        return "redirect:/";
+    }
+
     @Override
     public void run(String... args) throws Exception {
 //        Это код с сохранение нескольких "задач" для демонстрации
