@@ -20,11 +20,13 @@
             </div>
         </form>
 
-        <ul class="list-group">
-            <li th:each="item : ${todoItems}" class="list-group-item d-flex justify-content-between align-items-center">
-                <span th:text="${item.title}"></span>
-            </li>
-        </ul>
+    <ul class="list-group">
+        <li th:each="item : ${todoItems}" class="list-group-item d-flex justify-content-between align-items-center">
+            <span th:text="${item.title}"></span>
+            <!-- Кнопка удалить -->
+            <a th:href="@{/delete/{id}(id=${item.id})}" class="btn btn-danger btn-sm">Удалить</a>
+        </li>
+    </ul>
     </div>
 </body>
 </html>

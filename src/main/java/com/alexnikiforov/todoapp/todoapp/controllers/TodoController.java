@@ -5,9 +5,7 @@ import com.alexnikiforov.todoapp.todoapp.repositories.TodoItemRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +30,12 @@ public class TodoController implements CommandLineRunner {
     public String add(@ModelAttribute TodoItem todoItem) {
         todoItemRepository.save(todoItem);
 
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTodoItem(@PathVariable("id") Long id) {
+        todoItemRepository.deleteById(id);
         return "redirect:/";
     }
 
